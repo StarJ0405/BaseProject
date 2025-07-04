@@ -1,0 +1,6 @@
+.grayBtn {
+  background-color: #ffffff;
+}
+.grayBtn:active {
+  background-color: #fafafa;
+}

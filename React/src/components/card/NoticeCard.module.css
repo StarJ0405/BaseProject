@@ -1,0 +1,25 @@
+
+.NoticeCardWrapper {
+   background: white;
+   /* border-radius: 8px; */
+   box-shadow: 0 4px 6px rgba(99, 99, 99, 0.1);
+   cursor : pointer;
+   border-radius: 5px;
+   overflow: hidden;
+   transition: all 0.3s;
+   
+}
+
+.noticeIcon {
+   width: fit-content;
+   position: absolute;
+   bottom: 5px;
+   right: 10px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+ .NoticeCardWrapper:hover {
+   transform: translateY(-5px);
+ }
+}
+

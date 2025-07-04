@@ -1,0 +1,15 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow: /kr/admin/
+Disallow: /kr/login/
+Disallow: /kr/cart/
+Disallow: /kr/mypage/
+Disallow: /kr/inquiry/
+Disallow: /cn/admin/
+Disallow: /cn/login/
+Disallow: /cn/cart/
+Disallow: /cn/mypage/
+Disallow: /cn/inquiry/
+
+
+Sitemap: https://puffukorea.com/sitemap.xml

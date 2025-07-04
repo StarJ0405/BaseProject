@@ -1,0 +1,52 @@
+.pcTopButton {
+    position: fixed;
+    display: flex;
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
+    bottom: 70px;
+    right:30px;
+    z-index: 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+.pcTopButton:hover {
+    transform: translateY(-4px) scale(1.02);
+}
+
+.mobileTopButton {
+    position: fixed;
+    display: flex;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    bottom: 62px; /* 기본값 */
+    right: 16px;
+    z-index: 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+.mobileTopButton:active {
+    background-color: #eee;
+}
+
+/* 높이 조정 클래스 */
+.highBottom {
+    bottom: 124px !important;
+}
+.productDetail {
+    bottom: 116px !important;
+}
+
+.visible {transition: 0.3; visibility: visible; opacity: 1;}
+.hidden {transition: 0.3; visibility: hidden; opacity: 0;}

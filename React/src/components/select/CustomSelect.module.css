@@ -1,0 +1,84 @@
+.container {
+  position: relative;
+  /* width는 동적으로 적용되므로 제거 */
+}
+
+.trigger {
+  width: 100%;
+  /* height는 동적으로 적용되므로 제거 */
+  padding: 0 12px;
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.label {
+  font-size: 14px;
+  font-family: Pretendard;
+  /* color: rgba(44.4, 55.5, 74, 0.95); */
+  color: #353535;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  /* margin-top: 4px; */
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+  z-index: 10;
+  max-height: 156px; /* 최대 높이 설정 */
+  overflow-y: auto; /* 스크롤 가능하도록 설정 */
+}
+
+.dropdown_delivery {
+  position: fixed;
+  width: 90%;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin-top: 4px; */
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+  z-index: 10;
+  max-height: 300px; /* 최대 높이 설정 */
+  overflow-y: auto; /* 스크롤 가능하도록 설정 */
+  border-radius: 5px;
+}
+
+.option {
+  width: 100%;
+  padding: 9px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.option_text {
+  text-align: left;
+  font-size: 14px;
+  font-family: "Pretendard";
+  color: #353535;
+}
+.option:hover {
+  background-color: #f5f5f5;
+}

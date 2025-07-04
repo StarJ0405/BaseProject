@@ -1,0 +1,54 @@
+/* .dateButton {
+  border: 1px solid #a0a0a0;
+  border-radius: 10px;
+  color: #a0a0a0;
+  background-color: white;
+  padding: 6px 12px;
+  font-size: small;
+}
+.dateButton:hover {
+  color: white;
+  background-color: #5471e6;
+  border: 1px solid #5471e6;
+}
+
+.dateButton.selected {
+  color: white;
+  background-color: #5471e6;
+  border: 1px solid #5471e6;
+} */
+
+.dateButton {
+  border: 1px solid #383e58;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #333;
+  padding: 7px 15px;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  min-width: 55px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.dateButton:hover {
+  color: white;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+.dateButton.selected {
+  color: white;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+.pickerInput {
+  width: 220px !important;
+  color: #2c384af2;
+  padding: 6px 12px;
+  border: 1px solid var(--line-color) !important;
+}

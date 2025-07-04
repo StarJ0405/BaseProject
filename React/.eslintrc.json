@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2024
+  },
+  "ecmaFeatures": {
+    "bigint": true
+  },
+  "rules": {
+    "no-bigint": "off",
+    "no-unused-vars": "off"
+  },
+  "globals": {
+    "BigInt": true
+  }
+}

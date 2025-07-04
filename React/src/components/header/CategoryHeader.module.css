@@ -1,0 +1,41 @@
+.headerContainer {
+  /* border: 1px solid red; */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 55px;
+  z-index: 999;
+  background-color: white;
+  min-height: 50px;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  overflow-y: hidden;
+}
+
+.overlay {
+  width: 100%;
+  position: fixed;
+  top: 56px;
+  height: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  transition: all 0.3s;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.overlay.isOverlayVisible {
+  height: 100%;
+  transition: all 0.3s;
+  opacity: 1;
+}
+
+.selectedCategory {
+  transition: all 0.15s;
+}
+
+.hideScrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE, Edge */
+}
+.hideScrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

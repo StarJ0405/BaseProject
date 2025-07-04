@@ -1,0 +1,39 @@
+.tabContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  /* gap: 10px; */
+  gap: clamp(1px, 2.5vw, 20px);
+  position: sticky;
+  /* top: 50px; */
+  background: #ffffff;
+}
+
+.fixed {
+  z-index: 90;
+  background: #ffffff;
+  border-bottom: 1px solid #e9e8e8;
+}
+
+.tab {
+  /* flex: 1; */
+  width: fit-content;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  font-family: pretendard;
+  font-size: 15px;
+  font-weight: 500;
+  color: #8b8b8b;
+}
+
+.activeTab {
+  color: var(--main-color);
+  border-bottom: 2px solid var(--main-color); /* 활성화된 탭의 테두리 색상 */
+}
+
+.tabBottomLine {
+  width: 10px;
+  /* border-bottom: 0px solid #C9CCD1;  */
+}

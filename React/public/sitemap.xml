@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
+  <url>
+    <loc>https://puffukorea.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+
+   <!-- 한국 -->
+  <url>
+    <loc>https://puffukorea.com/kr/feeds/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://puffukorea.com/kr/stores/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://puffukorea.com/kr/store/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puffukorea.com/kr/product/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 카테고리 -->
+  <url><!-- 리퀴드 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JV4J9B0QHBVTV3GJD6PTM5KF</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 건강기능식품 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JQAVCPZ5JYQMJKEPEX2KS0E3</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 생활용품 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JQAVD02760ZJ7YMZ9SGG8PN6</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 화장품/향수 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JQAVD2YGY35NK17V6BC734VE</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 식품 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JQAVDABF89K5SD9115ZSGSNM</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 바디/헤어 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JV4CT7DAEPN8SRAQVV3AF41Q</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 생활/미용가전 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JV4G7ETF5BN13B7V7ANFBZ71</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 스포츠의류 및 잡화 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JV4GASAGAVAF16K6TPEPH00Y</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 출산/육아 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JV4J211SX7G28W5WCSQWF2D4</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+   <!-- 중국 -->
+  <url>
+    <loc>https://puffukorea.com/cn/feeds/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://puffukorea.com/cn/stores/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://puffukorea.com/cn/store/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puffukorea.com/cn/product/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 카테고리 -->
+  <url><!-- 리퀴드 -->
+    <loc>https://puffukorea.com/cn/feeds?category_id=pcat_01JV4J9B0QHBVTV3GJD6PTM5KF</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 건강기능식품 -->
+    <loc>https://puffukorea.com/cn/feeds?category_id=pcat_01JQAVCPZ5JYQMJKEPEX2KS0E3</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 생활용품 -->
+    <loc>https://puffukorea.com/cn/feeds?category_id=pcat_01JQAVD02760ZJ7YMZ9SGG8PN6</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 화장품/향수 -->
+    <loc>https://puffukorea.com/cn/feeds?category_id=pcat_01JQAVD2YGY35NK17V6BC734VE</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 식품 -->
+    <loc>https://puffukorea.com/cn/feeds?category_id=pcat_01JQAVDABF89K5SD9115ZSGSNM</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 바디/헤어 -->
+    <loc>https://puffukorea.com/cn/feeds?category_id=pcat_01JV4CT7DAEPN8SRAQVV3AF41Q</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 생활/미용가전 -->
+    <loc>https://puffukorea.com/cn/feeds?category_id=pcat_01JV4G7ETF5BN13B7V7ANFBZ71</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 스포츠의류 및 잡화 -->
+    <loc>https://puffukorea.com/cn/feeds?category_id=pcat_01JV4GASAGAVAF16K6TPEPH00Y</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><!-- 출산/육아 -->
+    <loc>https://puffukorea.com/kr/feeds?category_id=pcat_01JV4J211SX7G28W5WCSQWF2D4</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

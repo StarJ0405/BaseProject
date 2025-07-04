@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.flexStart {
+  display: flex;
+  flex: 1;
+  align-items: flex-start !important;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.vertical > .flexChild {
+  flex-direction: column;
+}
+
+.flex > div {
+  display: flex;
+  /* flex: 1; */
+}

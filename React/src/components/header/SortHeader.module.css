@@ -1,0 +1,19 @@
+.sortBtn {
+  padding: 5px 14px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  border: 1px solid #8b8b8b;
+  cursor: pointer;
+}
+.sortBtn.active {
+  border: 1px solid var(--main-color);
+}
+.sortText {
+  font-size: 15px;
+  color: #8b8b8b;
+  width: 500;
+  white-space: nowrap;
+}
+.sortText.active {
+  color: var(--main-color);
+}

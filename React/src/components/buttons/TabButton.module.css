@@ -1,0 +1,17 @@
+.tabBtn {
+  width: fit-content;
+  cursor: pointer;
+  justify-content: center;
+  padding: 10px 12px;
+  /* transition: all 0.3s ease; */
+  color: #353535;
+}
+
+.inactive {
+  border-bottom: none;
+}
+
+.active {
+  color: var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+}

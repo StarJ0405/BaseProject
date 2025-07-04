@@ -1,0 +1,98 @@
+.table {
+  /* border: 1px solid black; */
+  overflow-x: auto;
+}
+.content {
+  overflow-y: auto;
+}
+
+.bottom {
+  padding-top: 10px;
+  width: 100%;
+}
+.top {
+  padding: 0px 5px 15px 5px;
+  width: 100%;
+}
+
+.row {
+  padding: 15px;
+  transition: 0.2s;
+}
+
+.pageButton {
+  background-color: #ffffff;
+  color: #3c4b64;
+  border: 1px solid #cecece;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  min-width: 35px;
+  height: 35px;
+  text-align: center;
+  transition: 0.2s;
+  font-weight: bold;
+}
+.pageButton:hover {
+  background-color: #eee;
+}
+
+.pageButton.selected {
+  background-color: var(--main-color);
+  color: #ffffff;
+  font-weight: bold;
+  border-color: var(--main-color);
+}
+
+.pageButton.arrow {
+  background-color: #3c4b64;
+  color: #ffffff;
+  border-color: #3c4b64;
+  position: relative;
+}
+.pageButton.arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 16px;
+  background: url("/src/resources/icons/arrow_left.png") no-repeat center center /
+    cover;
+}
+.pageButton.arrowNext::before {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.pageButton.arrowTwice::before {
+  width: 16px;
+  height: 16px;
+  background: url("/src/resources/icons/arrow_twice.png") no-repeat center
+    center / cover;
+}
+.pageButton.arrowTwiceNext::before {
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%) rotate(180deg);
+  background: url("/src/resources/icons/arrow_twice.png") no-repeat center
+    center / cover;
+}
+
+.pageButton.selected:hover {
+  text-decoration: unset;
+}
+.row:hover {
+  /* background-color: #dfe4d6; */
+  background-color: #f5f5f5;
+}
+
+.tableHeader {
+  border-top: 0.5px solid #c0c0c0;
+  border-bottom: 0.5px solid #c0c0c0;
+  background-color: #3c4b64;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}

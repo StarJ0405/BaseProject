@@ -1,0 +1,54 @@
+
+.productCardWrapper {
+   
+    background: white;
+    /* border-radius: 8px; */
+    box-shadow: 0 4px 6px rgba(99, 99, 99, 0.1);
+    cursor : pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s;
+    
+}
+
+.feedCard_wrap {
+  position: relative;
+}
+
+.feedIcon {
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .productCardWrapper:hover {
+    transform: translateY(-5px);
+  }
+}
+
+
+
+/* 카드 슬라이드 형태일 때 -------------------------------------------- */
+
+.slideCardWrapper {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.slideCard_wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slideCard_wrap img {
+  border-radius: inherit;
+}
+
+.slideCardWrapper:hover {
+ transform: translateY(-3%);
+}
+

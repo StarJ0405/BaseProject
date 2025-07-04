@@ -1,0 +1,48 @@
+.headerContainer {
+  /* border: 1px solid red; */
+  position: fixed;
+  /* top: 50px; */
+  /* top: 50.5px */
+  /* z-index: 1501; */
+  z-index: 55;
+  background-color: white;
+  min-height: 50px;
+  border-top: 1px solid rgb(238, 238, 238);
+  border-bottom: 1px solid rgb(238, 238, 238);
+  overflow-y: hidden;
+  transition: all 0.3s;
+}
+
+.scroll_active {
+  top: 0 !important;
+}
+
+.overlay {
+  width: 100%;
+  position: fixed;
+  top: 50px;
+  height: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  transition: all 0.3s;
+  opacity: 0;
+  /* overflow-y: auto; */
+  -webkit-overflow-scrolling: touch;
+  pointer-events: none;
+}
+
+.overlay.isOverlayVisible {
+  height: calc(100vh - 50.5px);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.selectedCategory {
+  transition: all 0.15s;
+}
+
+.categoryScroll {
+  /* overflow-y: auto; */
+  height: calc(100dvh - 153px);
+  border-top: 1px solid #eee;
+}
