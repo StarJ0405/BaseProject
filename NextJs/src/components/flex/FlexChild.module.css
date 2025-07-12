@@ -1,0 +1,23 @@
+/* .flex {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.flexStart {
+  display: flex;
+  flex: 1;
+  align-items: flex-start !important;
+} */
+
+.flexChild {
+  /* padding: 0px;
+  align-items: center; */
+  display: flex;
+  /* flex: 1; */
+}
+
+.flexChild.fixed {
+  flex: none;
+  overflow: visible;
+}

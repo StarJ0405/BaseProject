@@ -1,0 +1,188 @@
+/* Calendar.module.css */
+
+.calendarContainer {
+  font-family: Arial, sans-serif;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 15px;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: #f0f0f0;
+}
+
+.currentMonthYear {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.weekDays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.weekDay {
+  padding: 5px 0;
+  font-size: 0.9em;
+}
+
+.datesGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.calendarDay {
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.95em;
+  position: relative;
+}
+
+.calendarDay:hover:not(.selected):not(.inactive) {
+  background-color: #e6f7ff;
+}
+
+/* 주말 스타일 */
+.weekend {
+  color: #ff4d4f;
+}
+
+/* 현재 달이 아닌 날짜 (흐리게) */
+.inactive {
+  color: #ccc;
+  cursor: default;
+}
+
+.inactive:hover {
+  background-color: transparent;
+}
+
+/* 오늘 날짜 */
+.today {
+  font-weight: bold;
+  color: #1890ff;
+  border: 1px solid #1890ff;
+}
+
+/* 선택된 날짜 (단일 선택 또는 범위 시작/끝) */
+.selected {
+  background-color: #1890ff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.selected:hover {
+  background-color: #1890ff;
+}
+
+/* 범위 내 날짜 */
+.inRange {
+  background-color: #bae7ff;
+  color: #333;
+}
+
+.inRange:hover {
+  background-color: #91d5ff;
+}
+
+/* 추가적으로, 선택된 날짜의 border-radius를 조정하여 범위 선택 시 부드럽게 연결될 수 있도록 */
+.calendarDay.selected:first-child,
+.calendarDay.selected:last-child {
+  border-radius: 4px;
+}
+
+/* --- 시간 선택기 스타일 --- */
+.timePickersContainer {
+  display: flex;
+  flex-direction: column; /* 세로로 정렬 */
+  gap: 10px; /* 시간 선택기 그룹 간의 간격 */
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.singleTimePicker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rangeTimePicker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.timeLabel {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #555;
+  min-width: 40px; /* 라벨 너비 고정 */
+  text-align: right;
+}
+
+.timeSelect {
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  margin: 0 2px; /* 간격 조절 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  min-width: 60px; /* 선택 박스 최소 너비 */
+  text-align: center;
+}
+
+.timeSelect:focus {
+  outline: none;
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.timeSelect:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.timeSeparator {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #555;
+}

@@ -1,0 +1,198 @@
+/* InputNumber.module.css */
+
+.container {
+  width: initial;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  width: max-content;
+  border: 1px solid var(--line-color, #ccc);
+  border-radius: 4px;
+}
+
+.mobileInputContainer {
+  /* Specific styles for mobile input container if needed */
+}
+
+.wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.inputContentWrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid var(--line-color, #ccc);
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+  background-color: var(--field-bg, #fff);
+  -moz-appearance: textfield; /* Hide arrows for Firefox */
+}
+
+/* Hide default arrows for Chrome, Safari, Edge */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input.borderless {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.input.hideLeftArrow {
+  border-left: none;
+}
+
+.input.hideRightArrow {
+  border-right: none;
+}
+
+.input:focus {
+  border-color: var(--primary-color, #007bff);
+}
+
+.prefix,
+.suffix {
+  padding: 10px 0;
+  color: var(--text-color, #333);
+  white-space: nowrap;
+}
+
+.prefix.borderless,
+.suffix.borderless {
+  /* Define borderless styles for prefix/suffix if they are visual extensions of the input */
+}
+
+.leftArrow,
+.rightArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line-color, #ccc);
+  cursor: pointer;
+  background-color: var(--button-bg, #f0f0f0);
+  transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+  background-color: var(--button-hover-bg, #e0e0e0);
+}
+
+.leftArrow {
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+  /* border-right: none; */
+  /* border-radius: 4px 0 0 4px; */
+}
+
+.rightArrow {
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  /* border-left: none; */
+  /* border-radius: 0 4px 4px 0; */
+}
+
+.leftArrow:not(.active),
+.rightArrow:not(.active) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--button-disabled-bg, #f8f8f8);
+}
+
+.leftArrow.borderless,
+.rightArrow.borderless {
+  border: none;
+  background: none;
+}
+
+.leftArrow.borderless:hover,
+.rightArrow.borderless:hover {
+  background: none;
+}
+
+.placeHolderArea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  color: var(--placeholder-color, #8b8b8b);
+  transition: all 0.2s ease-in-out;
+  height: 100%;
+}
+
+.placeHolder {
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+.input:focus + .placeHolderArea .placeHolder,
+.input.moveUp + .placeHolderArea .placeHolder,
+.input:not(:placeholder-shown) + .placeHolderArea .placeHolder {
+  transform: translateY(-150%) scale(0.85);
+  font-size: 12px;
+  color: var(--primary-color, #007bff);
+}
+
+.input:not(:focus):not(.moveUp)::placeholder {
+  color: transparent;
+}
+
+.buttonArea {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clearButton {
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  color: #333;
+}
+
+.requestMessage {
+  font-size: 13px;
+  color: var(--danger-color, #dc3545);
+  margin-top: 5px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

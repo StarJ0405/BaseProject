@@ -1,0 +1,100 @@
+/* InputTextArea.module.css */
+
+.wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.mobileWrap {
+  margin-bottom: 15px;
+}
+
+.labelId {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.inputTextWrap {
+  position: relative;
+  display: flex; /* Still useful for potential addons */
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid var(--line-color, #ccc);
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+  background-color: var(--field-bg, #fff);
+  resize: vertical; /* Allow vertical resizing by default */
+  min-height: 40px; /* Minimum height for textarea */
+  font-family: inherit; /* Inherit font from body/parent */
+}
+
+.textarea:focus {
+  border-color: var(--primary-color, #007bff);
+}
+
+/* Validation states */
+.invalid {
+  border-color: var(--danger-color, #dc3545);
+}
+
+.valid {
+  border-color: var(--success-color, #28a745);
+}
+
+/* Placeholder as floating label styles */
+.placeHolderArea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center; /* Align vertically with padding */
+  padding: 10px 12px; /* Match textarea padding */
+  color: var(--placeholder-color, #8b8b8b);
+  transition: all 0.2s ease-in-out;
+  /* Adjust height/width if needed to cover the entire area initially */
+  width: 100%;
+  height: 100%;
+  align-items: flex-start; /* Align to the top of the textarea's padding */
+}
+
+.placeHolder {
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+  padding-top: 0px; /* Adjust if needed to align with first line of text */
+}
+
+/* When textarea is focused or has content, move the placeholder up */
+.textarea:focus + .placeHolderArea .placeHolder,
+.textarea.moveUp + .placeHolderArea .placeHolder,
+.textarea:not(:placeholder-shown) + .placeHolderArea .placeHolder {
+  transform: translateY(-150%) scale(0.85);
+  font-size: 12px;
+  color: var(--primary-color, #007bff);
+}
+
+.textarea:not(:focus):not(.moveUp)::placeholder {
+  color: transparent;
+}
+
+.requestMessage {
+  font-size: 13px;
+  color: var(--danger-color, #dc3545);
+  margin-top: 5px;
+  display: none;
+}
+
+.requestMessage.active {
+  display: block;
+}

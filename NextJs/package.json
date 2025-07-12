@@ -1,0 +1,45 @@
+{
+  "name": "puffu",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ebay/nice-modal-react": "^1.2.13",
+    "@types/lodash": "^4.17.20",
+    "@types/qrcode.react": "^1.0.5",
+    "@types/react-color": "^3.0.13",
+    "@types/swiper": "^5.4.3",
+    "axios": "^1.10.0",
+    "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
+    "hls.js": "^1.6.7",
+    "i18next": "^25.3.1",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "lodash": "^4.17.21",
+    "next": "15.3.5",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.0.0",
+    "react-color": "^2.19.3",
+    "react-cookie": "^8.0.1",
+    "react-device-detect": "^2.2.3",
+    "react-dom": "^19.0.0",
+    "react-hotkeys-hook": "^5.1.0",
+    "react-i18next": "^15.6.0",
+    "react-redux": "^9.2.0",
+    "react-svg": "^16.3.0",
+    "super-expressive": "^2.0.0",
+    "swiper": "^11.2.10",
+    "swr": "^2.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

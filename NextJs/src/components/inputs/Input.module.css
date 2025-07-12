@@ -1,0 +1,123 @@
+/* Input.module.css */
+
+.wrap {
+  position: relative; /* For absolute positioning of children if needed */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; /* Example spacing */
+  width: 100%; /* Default width */
+}
+
+.mobileWrap {
+  /* Styles specific to mobile wrap, e.g. */
+  margin-bottom: 15px;
+}
+
+.labelId {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.inputTextWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.input {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid var(--line-color, #ccc); /* Fallback for --line-color */
+  border-radius: 0;
+  box-shadow: none;
+  outline: none; /* Remove default outline */
+  transition: border-color 0.2s ease-in-out;
+  background-color: var(--field-bg, #fff); /* Example background color */
+}
+
+.input:focus {
+  border-color: var(--primary-color, #007bff); /* Example focus color */
+}
+
+/* Validation states */
+.invalid {
+  border-color: var(--danger-color, #dc3545); /* Example invalid color */
+}
+
+.valid {
+  border-color: var(--success-color, #28a745); /* Example valid color */
+}
+
+/* Placeholder as floating label styles */
+.placeHolderArea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  pointer-events: none; /* Make sure clicks pass through to input */
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: var(--placeholder-color, #8b8b8b);
+  transition: all 0.2s ease-in-out;
+}
+
+.placeHolder {
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+.input:focus + .placeHolderArea .placeHolder,
+.input.moveUp + .placeHolderArea .placeHolder, /* 'moveUp' class applied by JS if value exists */
+.input:not(:placeholder-shown) + .placeHolderArea .placeHolder {
+  /* Fallback for browser autofill */
+  transform: translateY(-150%) scale(0.85); /* Adjust based on your design */
+  font-size: 12px; /* Smaller font when moved up */
+  color: var(--primary-color, #007bff); /* Color change when moved up */
+}
+
+.input:not(:focus):not(.moveUp)::placeholder {
+  color: transparent; /* Hide native placeholder when floating label is active */
+}
+
+.buttonArea {
+  width: max-content;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px; /* Default right position */
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none; /* Remove default button styling */
+  border: none;
+  padding: 0;
+}
+
+.requestMessage {
+  font-size: 13px;
+  color: var(--danger-color, #dc3545);
+  margin-top: 5px;
+  display: none; /* Hidden by default */
+}
+
+.requestMessage.active {
+  display: block; /* Shown when active */
+}
+
+/* Variables can be defined at a higher level, e.g., :root or a global stylesheet */
+/* Example variables for demonstration (you would define these in your main CSS or :root) */
+/*
+:root {
+  --line-color: #ccc;
+  --primary-color: #007bff;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+  --placeholder-color: #8b8b8b;
+  --field-bg: #fff;
+}
+*/

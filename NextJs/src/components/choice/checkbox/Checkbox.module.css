@@ -1,0 +1,82 @@
+/* app/components/Checkbox/Checkbox.module.css */
+
+/* CheckboxGroup을 위한 스타일은 이제 이 파일에 없습니다.
+   CheckboxGroup을 사용하는 부모 컴포넌트에서 직접 래퍼 div를 만들고 스타일을 적용해야 합니다. */
+
+/* CheckboxChild를 위한 래퍼 스타일 (이제 <label> 태그) */
+.checkboxChildWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+/* CheckboxAll을 위한 래퍼 스타일 (이제 <label> 태그) */
+.checkboxAllWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold; /* 전체 선택은 보통 굵게 표시 */
+  color: #333;
+  border-bottom: 1px solid #eee; /* 하단 구분선 */
+  padding-bottom: 10px;
+}
+
+/* 기본 브라우저 체크박스 숨기기 */
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  /* 시각적으로 숨기지만 접근성은 유지 */
+  pointer-events: none; /* 클릭 이벤트가 커스텀 체크박스로 전달되도록 */
+}
+
+/* 커스텀 체크박스 시각적 요소 */
+.customCheckbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px; /* 체크박스와 라벨 내용 사이 간격 */
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0; /* 라벨 텍스트가 길어져도 체크박스 크기 유지 */
+}
+
+/* 체크박스가 체크되었을 때의 스타일 */
+.checkboxInput:checked + .customCheckbox {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* 포커스 시 스타일 (접근성을 위해 중요) */
+.checkboxInput:focus-visible + .customCheckbox {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+/* 체크마크 스타일 */
+.checkmark {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* indeterminate 상태 마크 스타일 */
+.indeterminateMark {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 체크박스 옆 내용 (children)의 스타일은 이제 부모에서 직접 제어합니다.
+             이전의 .checkboxContent 스타일은 제거되었습니다. */

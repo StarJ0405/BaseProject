@@ -1,0 +1,55 @@
+.spinner {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.spinnerCircle {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #e5e5e5;
+  border-top-color: var(--main-color);
+  border-radius: 50%;
+  animation: spinnerRotate 0.8s linear infinite;
+}
+
+@keyframes spinnerRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 크기 변형을 위한 유틸리티 클래스들 */
+.small {
+  width: 16px;
+  height: 16px;
+}
+
+.medium {
+  width: 24px;
+  height: 24px;
+}
+
+.large {
+  width: 32px;
+  height: 32px;
+}
+
+/* 색상 변형을 위한 유틸리티 클래스들 */
+.primary .spinnerCircle {
+  border-top-color: var(--main-color);
+}
+
+.white .spinnerCircle {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+}
+
+.gray .spinnerCircle {
+  border-top-color: #8b8b8b;
+}

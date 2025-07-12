@@ -1,0 +1,35 @@
+/* src/components/StarRate/StarRate.module.css */
+
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px; /* 간격 조절 */
+  cursor: pointer; /* 클릭 가능한 별점임을 나타냄 */
+  user-select: none; /* 텍스트 선택 방지 */
+}
+
+.star_icon {
+  display: flex; /* SVG를 중앙에 배치하기 위함 */
+  align-items: center;
+  justify-content: center;
+  /* 마우스 오버 시 변화를 위한 transition */
+  transition: transform 0.1s ease-in-out;
+}
+
+.star_icon svg {
+  /* SVG 자체의 크기 */
+  width: 15px;
+  height: 15px;
+  display: block; /* 인라인 요소 여백 제거 */
+}
+
+/* 별 아이콘 hover 효과 (선택 가능한 별에만 적용) */
+.star_icon:not(.disabled):hover {
+  transform: scale(1.1); /* 살짝 커지게 */
+}
+
+/* 비활성화된 별 아이콘 */
+.star_icon.disabled {
+  cursor: default; /* 마우스 오버 시 커서 변경 */
+  opacity: 0.8; /* 약간 흐리게 */
+}

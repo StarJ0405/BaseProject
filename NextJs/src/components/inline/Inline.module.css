@@ -1,0 +1,13 @@
+.inline {
+  width: initial;
+  height: initial;
+}
+
+.inline > * {
+  display: inline-block;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

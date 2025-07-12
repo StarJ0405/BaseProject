@@ -1,0 +1,134 @@
+/* src/components/ProgressBar/ProgressBar.module.css */
+
+.progressBarContainer {
+  /* .progress 에 해당 */
+  background-color: #f5f5f5; /* $bg-light-gray */
+  border-radius: 20px;
+  box-shadow: none;
+  height: 20px;
+  position: relative; /* 자식 요소의 absolute 위치를 위한 기준 */
+  width: 100%; /* 기본 가로 */
+  cursor: pointer; /* 클릭 가능하도록 커서 변경 */
+  overflow: hidden; /* 내부 요소가 튀어나오지 않도록 */
+}
+
+.progressBarTrack {
+  /* .progressBar 에 해당 */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: var(
+    --progress-default-color,
+    #2196f3
+  ); /* 기본 색상, prop으로 오버라이드 가능 */
+  box-shadow: none;
+  height: 100%; /* 부모의 높이를 채움 */
+  width: 0%; /* 초기 너비 */
+  transition: width 0.3s ease-out; /* 너비 변화 애니메이션 */
+  position: relative; /* 텍스트 위치를 위한 기준 */
+  z-index: 1; /* 텍스트 아래에 있도록 */
+}
+
+.progressBarText {
+  position: absolute;
+  top: 50%;
+  left: 50%; /* 초기 위치를 가운데로 */
+  transform: translate(-50%, -50%); /* 정확히 중앙 정렬 */
+  font-size: 13px;
+  color: #fff; /* 기본 텍스트 색상 (바 위에 있을 때 잘 보이도록 흰색) */
+  white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 */
+  z-index: 2; /* 바 위에 있도록 */
+}
+
+/* 텍스트 정렬 옵션 */
+.textLeft .progressBarText {
+  left: 10px;
+  transform: translateY(-50%); /* 좌측 정렬 시 translateX(-50%) 제거 */
+}
+
+.textRight .progressBarText {
+  right: 10px;
+  left: auto; /* right가 우선하도록 left 해제 */
+  transform: translateY(-50%); /* 우측 정렬 시 translateX(-50%) 제거 */
+}
+
+/* 크기 변형 */
+.progressBarContainer.sizeXs {
+  height: 5px;
+  margin-top: 5px;
+}
+.progressBarContainer.sizeXs .progressBarTrack {
+  border-radius: 2.5px; /* 높이의 절반 */
+}
+
+.progressBarContainer.sizeSm {
+  height: 10px;
+  margin-top: 5px;
+}
+.progressBarContainer.sizeSm .progressBarTrack {
+  border-radius: 5px; /* 높이의 절반 */
+}
+
+.progressBarContainer.sizeLg {
+  height: 25px;
+}
+.progressBarContainer.sizeLg .progressBarTrack {
+  border-radius: 12.5px; /* 높이의 절반 */
+}
+
+/* 수직 프로그레스 바 */
+.progressBarContainer.vertical {
+  width: 20px;
+  height: 200px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 20px; /* 전체 컨테이너의 둥근 모서리 */
+}
+
+.progressBarContainer.vertical .progressBarTrack {
+  width: 100% !important; /* 수직 바의 트랙 너비는 컨테이너 너비와 동일 */
+  position: absolute;
+  bottom: 0; /* 아래부터 채워지도록 */
+  height: 0%; /* 초기 높이 */
+  border-top-left-radius: 0; /* 수직에서는 왼쪽 상단 모서리 둥글지 않음 */
+  border-top-right-radius: 0; /* 수직에서는 오른쪽 상단 모서리 둥글지 않음 */
+  border-bottom-left-radius: 20px; /* 아래쪽 모서리는 둥글게 */
+  border-bottom-right-radius: 20px; /* 아래쪽 모서리는 둥글게 */
+  transition: height 0.3s ease-out; /* 높이 변화 애니메이션 */
+}
+
+.progressBarContainer.vertical.sizeXs {
+  width: 5px;
+  margin-top: 5px;
+}
+.progressBarContainer.vertical.sizeXs .progressBarTrack {
+  border-bottom-left-radius: 2.5px;
+  border-bottom-right-radius: 2.5px;
+}
+
+.progressBarContainer.vertical.sizeSm {
+  width: 10px;
+  margin-top: 5px;
+}
+.progressBarContainer.vertical.sizeSm .progressBarTrack {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.progressBarContainer.vertical.sizeLg {
+  width: 30px;
+}
+.progressBarContainer.vertical.sizeLg .progressBarTrack {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* 수직 바에서 텍스트 위치 조정 */
+.progressBarContainer.vertical .progressBarText {
+  top: auto;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%); /* 수직 중앙 정렬을 위한 조정 */
+}
+/* 수직 바에서 텍스트 왼쪽/오른쪽 정렬은 일반적이지 않으므로 추가하지 않음 */
+
+/* -- (주석 처리된 줄무늬 및 애니메이션은 포함하지 않음. 필요시 별도로 추가해야 함) -- */

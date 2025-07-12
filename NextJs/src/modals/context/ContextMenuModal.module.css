@@ -1,0 +1,25 @@
+.container {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  /* padding: 10px; */
+}
+
+.row {
+  width: calc(100% - 40px);
+}
+.row:hover:not(.disabled) {
+  background-color: #303030;
+}
+/* .row:has(.row:hover) {
+  background-color: #303030;
+} */
+.parent .row {
+  background-color: #303030;
+}
+.row.disabled {
+  color: #a0a0a0;
+}
+.parent {
+  font-size: inherit;
+}

@@ -1,0 +1,128 @@
+/* 기본 토글 컨테이너 (Track) */
+.toggleContainer {
+  position: relative;
+  width: 50px; /* 토글 전체 너비 */
+  height: 28px; /* 토글 전체 높이 */
+  background-color: #e0e0e0; /* 비활성 상태 배경색 (회색) */
+  border-radius: 14px; /* 높이의 절반으로 완전한 캡슐 형태 */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out; /* 배경색 전환 애니메이션 */
+  display: inline-block; /* 인라인 블록으로 다른 요소와 나란히 배치 */
+  flex-shrink: 0; /* flex 컨테이너 안에서 크기 고정 */
+  overflow: hidden; /* 이미지가 이 영역을 벗어나면 잘리도록 */
+}
+
+/* 활성 상태 (Track) */
+.toggleContainer.active {
+  background-color: #ff3b30; /* 활성 상태 배경색 (빨간색) */
+}
+
+/* 토글 버튼 (Thumb) */
+.toggleButton {
+  position: absolute;
+  top: 2px; /* 상하 패딩 */
+  left: 2px; /* 좌측 패딩 */
+  width: 24px; /* 버튼 너비 */
+  height: 24px; /* 버튼 높이 */
+  background-color: #ffffff; /* 버튼 색상 (흰색) */
+  border-radius: 50%; /* 완전한 원 형태 */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* transform과 box-shadow 모두 애니메이션 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  z-index: 2; /* 엄지가 다른 내용 위에 오도록 */
+}
+
+/* 활성 상태일 때 버튼 위치 */
+.toggleContainer.active .toggleButton {
+  transform: translateX(22px); /* 활성화 시 오른쪽으로 이동 */
+}
+
+/* 비활성화 상태 */
+.toggleContainer.disabled {
+  opacity: 0.6; /* 투명도를 낮춰 비활성화 효과 */
+  cursor: not-allowed;
+}
+
+.toggleContainer.disabled .toggleButton {
+  box-shadow: none; /* 비활성화 시 그림자 제거 (선택 사항) */
+}
+
+/* --- 엄지 버튼 호버 CSS --- */
+.toggleContainer.enableHover:not(.disabled):hover .toggleButton {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* 더 강한 그림자 */
+}
+
+.toggleContainer.enableHover:not(.active):not(.disabled):hover .toggleButton {
+  transform: scale(1.08) var(--thumb-hover-transform, ""); /* 기존 transform에 추가 효과, 변수로 유연성 확보 */
+}
+/* 토글 컨테이너 배경색의 호버 효과 유지 */
+.toggleContainer.active.enableHover:not(.disabled):hover {
+  background-color: #ff665e; /* 활성 상태 호버 시 약간 더 밝은 빨간색 */
+}
+
+.toggleContainer:not(.active).enableHover:not(.disabled):hover {
+  background-color: #cccccc; /* 비활성 상태 호버 시 약간 더 밝은 회색 */
+}
+
+/* --- 이미지 컨테이너 및 이미지 CSS (미세 조정) --- */
+.imageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.imageContainer img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%; /* 실제 이미지 콘텐츠의 유효 너비에 맞춰 조정해보세요. (예: 20px, 28px) */
+  /* height: 24px; 실제 이미지 콘텐츠의 유효 높이에 맞춰 조정해보세요. */
+  object-fit: contain;
+  transition: opacity 0.3s ease-in-out, left 0.3s ease-in-out;
+  -webkit-user-drag: none;
+}
+
+/* OFF 상태 이미지 */
+.imageContainer img.off {
+  left: 2px; /* OFF 위치 (왼쪽 패딩). 필요시 0px, 4px 등으로 미세 조정해보세요. */
+  opacity: 1;
+}
+
+/* ON 상태 이미지 */
+.imageContainer img.on {
+  /* ON 위치 계산: 토글 전체 너비(50px) - 오른쪽 패딩(2px) - 이미지 너비(24px) = 24px */
+  /* 이 24px 값을 이미지 콘텐츠가 정확히 중앙에 오도록 미세 조정해보세요. */
+  /* left: calc(100% - 2px - 24px);  */
+  /* left: 24px; /* 만약 계산된 결과가 24px이라면 직접 값 지정 */
+  /* left: 22px; /* 예시: 약간 왼쪽으로 당기고 싶을 때 */
+  /* left: 26px; /* 예시: 약간 오른쪽으로 밀고 싶을 때 */
+  opacity: 0;
+}
+
+/* 활성 상태일 때 (toggleContainer.active) */
+.toggleContainer.active .imageContainer img.off {
+  left: -26px; /* OFF 이미지를 왼쪽으로 완전히 숨김 (이미지 너비 24px + 2px 패딩) */
+  opacity: 0;
+}
+
+.toggleContainer.active .imageContainer img.on {
+  /* ON 이미지를 ON 위치로 이동. 이 값은 위에 설정된 .imageContainer img.on의 left 값과 동일해야 합니다. */
+  /* left: calc(100% - 2px - 24px);  */
+  /* left: 24px; /* 위에 24px로 설정했다면 여기도 24px */
+  /* left: 22px; /* 위에 22px로 설정했다면 여기도 22px */
+  opacity: 1;
+}
+
+/* --- 이미지 모드일 때 CSS 기본 트랙 및 엄지 숨기기 --- */
+.hasImageConfig {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.hasImageConfig .toggleButton {
+  display: none !important;
+}

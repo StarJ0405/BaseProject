@@ -1,0 +1,20 @@
+.confirmButton {
+  cursor: pointer;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  position: relative;
+}
+.confirmButton.red:active {
+  background-color: #ff0033;
+}
+.confirmButton.white {
+  background-color: #ffffff;
+}
+.confirmButton.white:active {
+  background-color: #ffffff 1f4;
+}

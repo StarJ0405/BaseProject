@@ -1,0 +1,114 @@
+/* InputHashTag.module.css */
+
+.container {
+  width: initial;
+  display: flex;
+  flex-direction: column;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap; /* Allow tags to wrap to the next line */
+  gap: 8px; /* Space between tags and input */
+  padding: 8px 12px; /* Padding for the entire tag area */
+  border: 1px solid var(--line-color, #ccc);
+  border-radius: 4px;
+  background-color: var(--field-bg, #fff);
+  min-height: 40px; /* Ensure it has some height even with no tags */
+  align-items: center; /* Vertically align tags and input */
+  cursor: text; /* Indicate it's an editable area */
+  transition: border-color 0.2s ease-in-out;
+}
+
+.tagsContainer:focus-within {
+  border-color: var(--primary-color, #007bff);
+}
+
+.tag {
+  width: max-content;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--tag-bg, #e0e0e0);
+  color: var(--tag-text-color, #333);
+  padding: 4px 8px;
+  border-radius: 20px; /* Pill shape */
+  font-size: 14px;
+  white-space: nowrap; /* Prevent tag text from wrapping */
+}
+
+.tagText {
+  margin-right: 6px;
+}
+
+.tagRemove {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 4px;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--tag-remove-color, #666);
+  transition: color 0.2s ease-in-out;
+}
+
+.tagRemove:hover {
+  color: var(--tag-remove-hover-color, #000);
+}
+
+.input {
+  flex-grow: 1; /* Input takes remaining space */
+  border: none;
+  outline: none;
+  padding: 0; /* No padding, container handles it */
+  font-size: 15px;
+  background-color: transparent; /* No background, container handles it */
+  min-width: 80px; /* Prevent input from becoming too small */
+  width: 100%;
+}
+
+.input::placeholder {
+  color: var(--placeholder-color, #8b8b8b);
+}
+
+.requestMessage {
+  font-size: 13px;
+  color: var(--danger-color, #dc3545);
+  margin-top: 5px;
+}
+
+.clearButtonArea {
+  margin-left: 8px; /* Space from input/tags */
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--clear-button-color, #888);
+}
+
+.clearButton:hover {
+  color: var(--clear-button-hover-color, #333);
+}
+
+/* Optional: Disabled state */
+.tagsContainer.disabled {
+  background-color: var(--field-disabled-bg, #f5f5f5);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.tagsContainer.disabled .tagRemove {
+  cursor: not-allowed;
+}
+
+.tagsContainer.disabled .input {
+  cursor: not-allowed;
+}
+
+.tagsContainer.error {
+  border-color: var(--danger-color, #dc3545);
+}

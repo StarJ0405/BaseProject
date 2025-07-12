@@ -1,0 +1,201 @@
+/* SpinnerCalendar.module.css */
+
+.spinnerCalendarContainer {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  width: 320px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  padding-bottom: 15px;
+  box-sizing: border-box; /* 중요: 패딩이 너비/높이에 포함되도록 */
+}
+
+.headerDate {
+  background-color: #1a73e8;
+  color: #fff;
+  font-size: 1.3em;
+  padding: 15px 20px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.spinnerColumnsWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 항목들이 세로 중앙에 정렬되도록 보장 */
+  padding: 20px 0;
+  background-color: #fff;
+  position: relative; /* 선택 라인이 wrapper를 기준으로 위치할 경우 (아니면 각 column에) */
+}
+
+.spinnerColumn {
+  position: relative; /* 중요: 자식 absolute 요소의 기준점 */
+  height: 150px; /* ITEM_HEIGHT (30px) * 5 = 150px. 정확히 5개 항목이 보여야 함. */
+  overflow-y: scroll; /* 스크롤 가능하게 설정 */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  flex: 1;
+  max-width: 90px; /* 각 컬럼의 최대 너비 */
+  text-align: center;
+  cursor: grab; /* 드래그 가능함을 시각적으로 알림 */
+
+  /* 스크롤 효과를 위한 마스킹 (위아래를 흐릿하게) */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+
+  /* 터치 스크롤 최적화 */
+  -webkit-overflow-scrolling: touch;
+
+  /* 스크롤 시 항목 깜빡임 방지 (transform 사용 시) */
+  transform: translateZ(0); /* GPU 가속 활성화 */
+}
+
+/* 스크롤바 숨기기 */
+.spinnerColumn::-webkit-scrollbar {
+  display: none;
+}
+
+/* 선택된 항목을 강조하는 라인 (가운데 1개 항목 높이만큼) */
+/* 이 라인들이 컬럼 중앙에 오도록 해야 합니다. */
+.selectionLineTop,
+.selectionLineBottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px; /* 선의 두께 */
+  background-color: #ccc;
+  z-index: 1;
+  pointer-events: none; /* 라인 위로 마우스 이벤트를 통과시키도록 */
+}
+
+/* 150px 높이의 컬럼에서 ITEM_HEIGHT 30px의 항목이 5개 보일 때,
+             중앙에 있는 3번째 항목의 위/아래 경계선이 되도록 위치 조정 */
+/* 컬럼의 50% 지점에서 ITEM_HEIGHT/2 만큼 위/아래로 이동 */
+.selectionLineTop {
+  top: 50%;
+  transform: translateY(-15px); /* ITEM_HEIGHT (30px) / 2 = 15px 위로 */
+}
+
+.selectionLineBottom {
+  top: 50%;
+  transform: translateY(15px); /* ITEM_HEIGHT (30px) / 2 = 15px 아래로 */
+}
+
+.spinnerItem {
+  padding: 0; /* 중요: 패딩이 있으면 min-height 계산이 틀어짐 */
+  min-height: 30px; /* 모든 항목의 높이 고정 (ITEM_HEIGHT와 동일) */
+  line-height: 30px; /* 텍스트 세로 중앙 정렬 */
+  font-size: 1.1em; /* 기본 폰트 사이즈 */
+  color: #757575;
+  user-select: none; /* 텍스트 선택 방지 */
+  /* transition: color 0.1s ease-out, font-size 0.1s ease-out; /* 부드러운 하이라이트 전환 */
+  will-change: color, font-size; /* 렌더링 최적화 힌트 */
+}
+
+.spinnerItem.selected {
+  color: #1a73e8;
+  font-weight: 500;
+  font-size: 1.3em; /* 선택된 항목 폰트 사이즈 (높이 변화에 주의) */
+}
+
+/* 더미 패딩 항목 */
+.spinnerItemDummy {
+  min-height: 30px; /* Same height as spinnerItem */
+  line-height: 30px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.timeSeparatorColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center;
+  width: 20px;
+  height: 150px; /* 스피너 컬럼과 동일한 높이 */
+}
+
+.timeSeparatorItem {
+  min-height: 30px; /* ITEM_HEIGHT와 동일 */
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+  color: #757575;
+}
+
+.timeSeparatorItem.selectedSeparator {
+  font-size: 1.3em;
+  font-weight: 500;
+  color: #1a73e8;
+}
+
+.doneButtonContainer {
+  text-align: right;
+  padding: 10px 20px;
+  width: max-content;
+  margin-left: auto;
+}
+
+.doneButton {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.doneButton:hover {
+  background-color: #e8f0fe;
+}
+.selectionLineTop {
+  top: 50%;
+  transform: translateY(-15px); /* ITEM_HEIGHT / 2 = 15px */
+}
+.selectionLineBottom {
+  top: 50%;
+  transform: translateY(15px); /* ITEM_HEIGHT / 2 = 15px */
+}
+
+.selectionOverlay {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 30px; /* ITEM_HEIGHT와 동일하게 */
+  transform: translateY(-50%);
+  border-top: 2px solid #007aff;
+  border-bottom: 2px solid #007aff;
+  pointer-events: none; /* 스크롤을 방해하지 않도록 함 */
+  z-index: 1;
+}
+
+.timeSeparator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 20px;
+  color: #333;
+  padding-top: calc(50% - 15px); /* 중앙 정렬 트릭 */
+  box-sizing: border-box;
+}

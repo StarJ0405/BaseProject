@@ -1,0 +1,33 @@
+.container {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 70%);
+  opacity: 0;
+  /* ToastModal.js 의 onClose 함수에서 시간과 일치 */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 60000;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid #eee;
+  width: fit-content;
+  box-shadow: 1px 4px 12px 0px rgba(214, 214, 214, 0.55);
+  -webkit-box-shadow: 1px 4px 12px 0px rgba(214, 214, 214, 0.55);
+  -moz-box-shadow: 1px 4px 12px 0px rgba(214, 214, 214, 0.55);
+}
+
+.container.mounted {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+}
+
+.container.disappear {
+  transform: translate(-50%, 70%);
+  opacity: 0;
+}
+
+.messageBox {
+  padding: 10px;
+  /* width: 100px; */
+}
