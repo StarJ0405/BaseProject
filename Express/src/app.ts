@@ -14,11 +14,20 @@ import express, { NextFunction, Request, Response, Router } from "express";
 import * as fs from "fs";
 import multer from "multer";
 
+import { createServer } from "http";
+import { Socket, Server as SocketIOServer } from "socket.io";
 import { initializeDataSource } from "./data-source";
 import { initializeModules } from "./expand/register";
 import { applyConfiguredMiddlewares } from "./middleware";
 
-type ApiHandler = (
+export type SocketHandler = (
+  socket: Socket,
+  io: SocketIOServer,
+  url: String,
+  data: any
+) => void | Promise<void>;
+
+export type ApiHandler = (
   req: Request,
   res: Response,
   next?: NextFunction
@@ -30,6 +39,7 @@ interface ApiModule {
   DELETE?: ApiHandler;
   PUT?: ApiHandler;
   PATCH?: ApiHandler;
+  SOCKET?: SocketHandler;
 }
 
 const API_BASE_DIR = path.join(__dirname, "api"); // src/api 경로
@@ -37,15 +47,16 @@ const port = process.env.PORT || 8080;
 
 const app = express();
 
+if (process.env.CONSOLE_LOG)
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(
+      `[${new Date().toISOString()}] ${req.method} ${req.originalUrl} from ${
+        req.ip
+      }`
+    );
+    next();
+  });
 // CORS 설정
-app.use((req: Request, res: Response, next: NextFunction) => {
-  console.log(
-    `[${new Date().toISOString()}] ${req.method} ${req.originalUrl} from ${
-      req.ip
-    }`
-  );
-  next();
-});
 app.use(
   cors({
     origin: process.env.CORS ? process.env.CORS.split(",") : "*",
@@ -59,8 +70,19 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const httpServer = createServer(app);
+
+const io = new SocketIOServer(httpServer, {
+  cors: {
+    origin: process.env.CORS ? process.env.CORS.split(",") : "*",
+    methods: ["GET", "POST"],
+  },
+});
+
+let collectedSocketHandlers: Map<string, any> = new Map();
 async function __loadApiRoutes(appRouter: Router) {
   try {
+    collectedSocketHandlers = new Map();
     const files = await fs.promises.readdir(API_BASE_DIR, {
       recursive: true,
       withFileTypes: false,
@@ -105,6 +127,12 @@ async function __loadApiRoutes(appRouter: Router) {
           }
           if (apiModule.PATCH) {
             appRouter.patch(urlPath, apiModule.PATCH);
+          }
+          if (apiModule.SOCKET) {
+            if (urlPath.includes(":") || urlPath.includes("*")) {
+              console.error(`${urlPath} is not allowed`);
+            }
+            collectedSocketHandlers.set(urlPath, apiModule.SOCKET);
           }
         } catch (importError) {
           console.error(`Error importing ${fullPath}:`, importError);
@@ -166,8 +194,30 @@ initializeDataSource().then(() => {
               .json({ message: "서버에서 예상치 못한 오류가 발생했습니다." });
           }
         );
+        io.on("connection", (socket) => {
+          if (process.env.CONSOLE_LOG)
+            console.log(`[${new Date().toISOString()}] ${socket.id} connected`);
+          for (const [
+            urlPath,
+            socketEvent,
+          ] of collectedSocketHandlers.entries()) {
+            socket.on(urlPath, async (data) =>
+              socketEvent(socket, io, urlPath, data)
+            );
+          }
+
+          socket.onAny((...args) => console.log(args));
+
+          // 공통 disconnect 핸들러 (모든 소켓에 대해 한 번만 등록)
+          if (process.env.CONSOLE_LOG)
+            socket.on("disconnect", () => {
+              console.log(
+                `[${new Date().toISOString()}] ${socket.id} disconnected`
+              );
+            });
+        });
         // 서버 시작
-        app.listen(port, () => {
+        httpServer.listen(port, () => {
           console.log(`Server is running on http://localhost:${port}`);
         });
         initializeModules();
