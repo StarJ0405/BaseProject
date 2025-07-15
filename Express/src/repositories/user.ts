@@ -1,11 +1,11 @@
 import { BaseRepository } from "data-source";
-import { Link } from "models/link";
+import { User } from "models/user";
 import { inject, injectable } from "tsyringe";
 import { EntityManager } from "typeorm";
 
 @injectable()
-export class LinkRepository extends BaseRepository<Link> {
+export class UserRepository extends BaseRepository<User> {
   constructor(@inject("dataSource") public readonly manager: EntityManager) {
-    super(manager, Link);
+    super(manager, User);
   }
 }

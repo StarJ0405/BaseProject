@@ -1,9 +1,9 @@
-import { Link } from "models/link";
+import { User } from "models/user";
 import { EntitySubscriberInterface, EventSubscriber } from "typeorm";
 
 @EventSubscriber()
-export class LinkSubscriber implements EntitySubscriberInterface<Link> {
+export class UserSubscriber implements EntitySubscriberInterface<User> {
   listenTo(): Function | string {
-    return Link;
+    return User;
   }
 }

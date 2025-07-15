@@ -1,6 +1,7 @@
 declare namespace Express {
   interface Request {
     parsedQuery?: any;
+    user?: any;
   }
 }
 declare interface Pageable<T> {

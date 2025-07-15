@@ -1,10 +1,9 @@
 import { ApiHandler, SocketHandler } from "app";
-import { Request, Response } from "express";
 import { Link } from "models/link";
 import { LinkService } from "services/link";
 import { container } from "tsyringe";
 
-export const POST: ApiHandler = async (req: Request, res: Response) => {
+export const POST: ApiHandler = async (req, res) => {
   const {
     start_date,
     end_date,
@@ -24,13 +23,13 @@ export const POST: ApiHandler = async (req: Request, res: Response) => {
     } else {
       result = await service.creates(_data, amount);
     }
-    res.json(return_data ? { links: result } : { message: "success" });
+    res.json(return_data ? { content: result } : { message: "success" });
   } catch (err) {
     res.status(500).send(err);
   }
 };
 
-export const GET: ApiHandler = async (req: Request, res: Response) => {
+export const GET: ApiHandler = async (req, res) => {
   let { pageSize, pageNumber = 0, sort, ...where } = req.query;
   const service: LinkService = container.resolve(LinkService);
   if (pageSize) {

@@ -149,6 +149,9 @@ export abstract class BaseRepository<T extends ObjectLiteral> {
   }
 }
 export abstract class BaseEntity extends _BaseEntity {
+  constructor() {
+    super();
+  }
   @PrimaryColumn()
   id!: string;
 

@@ -1,5 +1,5 @@
 import { BaseEntity } from "data-source";
-import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
+import { BeforeInsert, Column, Entity } from "typeorm";
 import { generateEntityId } from "utils/functions";
 
 @Entity({ name: "link" })
