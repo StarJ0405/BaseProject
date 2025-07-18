@@ -3,6 +3,7 @@ import P from "@/components/P/P";
 import { copy, log } from "@/shared/utils/Functions";
 import { DirectionalStyleInterface } from "@/shared/utils/Interfaces";
 import _ from "lodash";
+import { CSSProperties } from "react";
 
 const { useState, useEffect, useRef } = require("react");
 const dev = process.env.NEXT_PUBLIC_DEV;
@@ -58,7 +59,18 @@ const Image = ({
   onMouseDown,
   contextmenu,
   onMouseEnter,
-}: any) => {
+}: ComponentProps<HTMLImageElement> & {
+  alt?: string;
+  src?: string;
+  size?: CSSProperties["width"] | CSSProperties["height"];
+  maxSize?: CSSProperties["maxWidth"] | CSSProperties["maxHeight"];
+  minSize?: CSSProperties["minWidth"] | CSSProperties["minHeight"];
+  emptyRatio?: CSSProperties["aspectRatio"];
+  errorStyle?: React.CSSProperties;
+  successStyle?: React.CSSProperties;
+  selectable?: boolean;
+  contextmenu?: boolean;
+}) => {
   const [isMounted, setMounted] = useState(false);
   const [hasError, setHasError] = useState(src ? false : true);
   const [retry, setRetry] = useState(0);
@@ -183,7 +195,7 @@ const Image = ({
               notranslate
               padding={5}
               textHover
-              cursor
+              cursor={cursor}
               ellipsis
               onClick={() =>
                 copy({ text: src, message: "url을 복사했습니다." })

@@ -1,7 +1,7 @@
 import ProviderWrapper from "@/providers/ProviderWrapper";
 import type { Metadata } from "next";
-import "./globals.css";
-import "./normalize.css";
+import "../resources/css/global.css";
+import "../resources/css/normalize.css";
 
 export const metadata: Metadata = {
   title: "Puffu",

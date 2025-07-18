@@ -1,8 +1,9 @@
 "use client";
+import { DirectionalStyleInterface } from "@/shared/utils/Interfaces";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import style from "./P.module.css";
-import { DirectionalStyleInterface } from "@/shared/utils/Interfaces";
+import { CSSProperties } from "react";
 
 function P({
   hidden,
@@ -78,7 +79,20 @@ function P({
   maximumFractionDigits = 0,
   lineClamp,
   children,
-}: any) {
+}: ComponentProps<HTMLParagraphElement> & {
+  weight?: CSSProperties["fontWeight"];
+  size?: CSSProperties["fontSize"];
+  i?: boolean;
+  min?: CSSProperties["fontSize"];
+  max?: CSSProperties["fontSize"];
+  selected?: boolean;
+  textHover?: boolean;
+  enableHover?: boolean;
+  ellipsis?: boolean;
+  rawText?: boolean;
+  notranslate?: boolean;
+  maximumFractionDigits?: number;
+}) {
   const { t } = useTranslation();
   // const { flagCode } = useContext(LanguageContext);
   // if (!font) {
@@ -156,10 +170,10 @@ function P({
         fontStyle: i ? "italic" : fontStyle ? fontStyle : "normal",
         textIndent: textIndent,
         color: color || (!className ? "inherit" : undefined),
-        // textDecoration: textDecoration ? textDecoration : undefined,
+        textDecoration,
         verticalAlign: verticalAlign || "middle",
         whiteSpace: whiteSpace,
-        textAlign: textAlign ? textAlign : undefined,
+        textAlign,
         backgroundColor: backgroundColor,
         borderRadius: borderRadius,
         cursor: cursor ? "pointer" : !className ? "inherit" : undefined,
@@ -173,7 +187,7 @@ function P({
         textOverflow: lineClamp ? "ellipsis" : textOverflow,
         overflowWrap: overflowWrap,
         position,
-        textDecorationLine: textDecoration || textDecorationLine || undefined,
+        textDecorationLine,
         top,
         right,
         bottom,

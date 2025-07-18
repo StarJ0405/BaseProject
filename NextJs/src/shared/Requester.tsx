@@ -26,16 +26,16 @@ class _Requester {
 
     this.instance.interceptors.request.use(
       async (config) => {
-        // let jwt;
-        // if (typeof window === "undefined") {
-        //   const { cookies } = await import("next/headers");
+        let jwt;
+        if (typeof window === "undefined") {
+          const { cookies } = await import("next/headers");
 
-        //   const cookieStore = await cookies();
-        //   jwt = cookieStore.get(Cookies.JWT);
-        // } else {
-        //   jwt = new ReactCookies().get(Cookies.JWT, getCookieOption());
-        // }
-        // if (jwt) config.headers.Authorization = `Bearer ${jwt}`;
+          const cookieStore = await cookies();
+          jwt = cookieStore.get(Cookies.JWT);
+        } else {
+          jwt = new ReactCookies().get(Cookies.JWT, getCookieOption());
+        }
+        if (jwt) config.headers.Authorization = jwt;
         return config;
       },
       async (error) => {

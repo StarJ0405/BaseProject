@@ -1,5 +1,3 @@
-import ProductList from "./product";
-
 const fetchProducts = async () => {
   const response = await fetch(
     "https://puffukorea.com/api/store/products?order=Random()&limit=10",
@@ -12,16 +10,27 @@ const fetchProducts = async () => {
   }
   const data = await response.json();
 
-  return data.products;
+  return data;
+  // return data.products;
 };
 
 export default async function Home() {
   const products = await fetchProducts();
 
   return (
-    <div style={{ height: "100vh", width: "100vw" }}>
-      <h1>상품 목록</h1>
-      <ProductList products={products} />
+    <div style={{ height: "100vh", width: "100vw", gap: 10 }}>
+      {/* <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <h1>기본 불러오기</h1>
+        <ProductList products={products} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <h1>무한 스크롤</h1>
+        <ProductList2 products={products} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <h1>페이징</h1>
+        <ProductList3 products={products} />
+      </div> */}
     </div>
   );
 }

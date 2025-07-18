@@ -1,6 +1,6 @@
+import { DirectionalStyleInterface } from "@/shared/utils/Interfaces";
 import clsx from "clsx";
 import style from "./Div.module.css";
-import { DirectionalStyleInterface } from "@/shared/utils/Interfaces";
 
 function Div({
   id,
@@ -59,7 +59,7 @@ function Div({
   onDragOver,
   onDragLeave,
   onDrop,
-}: any) {
+}: ComponentProps<HTMLDivElement>) {
   const getDirectionalStyles = (): DirectionalStyleInterface => {
     const styles: DirectionalStyleInterface = {};
     // padding 처리
