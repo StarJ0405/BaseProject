@@ -12,8 +12,8 @@
   background-color: #303030;
 }
 /* .row:has(.row:hover) {
-  background-color: #303030;
-} */
+            background-color: #303030;
+          } */
 .parent .row {
   background-color: #303030;
 }

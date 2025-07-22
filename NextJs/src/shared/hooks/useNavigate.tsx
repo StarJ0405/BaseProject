@@ -14,7 +14,6 @@ export default function useNavigate(): NavigateFunction {
   const router = useRouter();
 
   return (...props) => {
-    console.log("try to ", props);
     if (!props[0]) return;
     if (typeof props[0] === "number") {
       const delta: number = props[0];

@@ -1,10 +1,10 @@
-export interface CustomerDataInterface {
+interface CustomerDataInterface {
   id: string;
   birthday?: string;
   adult?: boolean;
 }
 
-export interface DirectionalStyleInterface {
+interface DirectionalStyleInterface {
   padding?: string | number;
   paddingTop?: string | number;
   paddingRight?: string | number;
@@ -21,3 +21,7 @@ export interface DirectionalStyleInterface {
   borderBottom?: string | number;
   borderLeft?: string | number;
 }
+
+type OSType = "ios" | "android" | "windows" | "macos" | "linux" | "unknown";
+
+type DeviceType = "desktop" | "mobile" | "tablet" | "unknown";

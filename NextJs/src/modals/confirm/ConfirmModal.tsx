@@ -5,7 +5,7 @@ import VerticalFlex from "@/components/flex/VerticalFlex";
 import LoadingSpinner from "@/components/loading/LoadingSpinner";
 import NiceModal from "@ebay/nice-modal-react";
 import ModalBase from "../ModalBase";
-import { useBrowserEvent } from "@/providers/BrowserEventProvider";
+import { useBrowserEvent } from "@/providers/BrowserEventProvider/BrowserEventProviderClient";
 import { useRef, useState } from "react";
 import style from "./ConfirmModal.module.css";
 

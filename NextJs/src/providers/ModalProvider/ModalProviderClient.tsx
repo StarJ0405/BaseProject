@@ -10,7 +10,7 @@ export const ModalContext = createContext({
   modal: {} as object, // 마지막에 열린 모달
 });
 
-export default function ModalProvider({
+export default function ModalProviderClient({
   children,
 }: {
   children: React.ReactNode;
@@ -18,18 +18,9 @@ export default function ModalProvider({
   const [modals, setModals] = useState<any[]>([]);
 
   const addModal = (modal: any) => {
-    // console.log("try to add", modals);
-    // const added = [...modals, modal];
-    // console.log("added : ", added);
-    // setModals(added);
-
     setModals([...modals, modal]);
   };
   const removeModal = (modal: any) => {
-    // const removed = [...modals.filter((f) => f !== modal)];
-    // console.log("removed : ", removed);
-    // setModals(removed);
-
     setModals([...modals.filter((f) => f !== modal)]);
   };
   const closeAllModal = () => {

@@ -100,3 +100,80 @@ export const copy = ({ text, message }: { text: string; message?: string }) => {
     // if (message) toast({ message: message });
   }
 };
+
+export function getDeviceType(userAgent: string | null): DeviceType {
+  if (!userAgent) return "unknown";
+
+  userAgent = userAgent.toLowerCase(); // 대소문자 구분 없이 비교하기 위해 소문자로 변환
+
+  const isAndroid = /android/.test(userAgent);
+  const isiPad = /ipad/.test(userAgent);
+  const isiPhone = /iphone/.test(userAgent);
+  const isiPod = /ipod/.test(userAgent);
+  const isBlackBerry = /blackberry/.test(userAgent);
+  const isWindowsPhone = /windows phone/.test(userAgent);
+  const isOperaMini = /opera mini/.test(userAgent);
+  const isWebOS = /webos/.test(userAgent);
+  const isKindle = /kindle/.test(userAgent); // 아마존 킨들
+
+  // 태블릿 판별 (일반적인 모바일 키워드가 없으면서 태블릿 특유의 키워드가 있을 때)
+  // 'android'이면서 'mobile' 키워드가 없으면 안드로이드 태블릿일 가능성이 높습니다.
+  if (
+    isiPad ||
+    (isAndroid && !/mobile/.test(userAgent)) ||
+    isKindle ||
+    /tablet|playbook|silk/i.test(userAgent)
+  ) {
+    return "tablet";
+  }
+
+  // 모바일 판별
+  if (
+    isiPhone ||
+    isiPod ||
+    isAndroid ||
+    isBlackBerry ||
+    isWindowsPhone ||
+    isOperaMini ||
+    isWebOS
+  ) {
+    return "mobile";
+  }
+
+  // 위 조건에 해당하지 않으면 데스크톱으로 간주
+  return "desktop";
+}
+
+export function getOperatingSystem(userAgent: string | null): OSType {
+  if (!userAgent) return "unknown";
+
+  userAgent = userAgent.toLowerCase();
+
+  if (/iphone|ipad|ipod/.test(userAgent)) {
+    return "ios";
+  }
+  if (/android/.test(userAgent)) {
+    return "android";
+  }
+  if (
+    /windows phone|windows ce|windows mobile/.test(userAgent) ||
+    /windows nt/.test(userAgent)
+  ) {
+    return "windows";
+  }
+  if (/macintosh|mac os x/.test(userAgent)) {
+    return "macos";
+  }
+  if (/linux/.test(userAgent)) {
+    // Android도 Linux 기반이지만, 위에서 먼저 처리되었으므로 여기는 주로 데스크톱 Linux
+    return "linux";
+  }
+
+  return "unknown";
+}
+
+export function getWebView(userAgent: string | null): boolean {
+  if (!userAgent) return false;
+
+  return /webview/.test(userAgent);
+}

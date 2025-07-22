@@ -1,7 +1,7 @@
+import ConfirmModal from "@/modals/confirm/ConfirmModal";
+import ContextMenuModal from "@/modals/context/ContextMenuModal";
 import ToastModal from "@/modals/toast/ToastModal";
 import NiceModal from "@ebay/nice-modal-react";
-import ConfirmModal from "./confirm/ConfirmModal";
-import ContextMenuModal from "./context/ContextMenuModal";
 
 function ModalHandler() {
   NiceModal.register("toast", ToastModal);

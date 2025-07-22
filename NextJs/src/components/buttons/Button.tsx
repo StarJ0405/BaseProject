@@ -1,9 +1,9 @@
 "use client";
+import P from "@/components/P/P";
+import { DirectionalStyleInterface } from "@/shared/utils/Interfaces";
 import clsx from "clsx";
 import { useRef } from "react";
 import style from "./Button.module.css";
-import P from "@/components/P/P";
-import { DirectionalStyleInterface } from "@/shared/utils/Interfaces";
 function Button({
   className,
   width,
@@ -39,7 +39,11 @@ function Button({
   onMouseDown,
   type = "button",
   children,
-}: any) {
+}: ComponentProps<HTMLButtonElement> & {
+  type?: "button" | "file";
+  disabled?: boolean;
+  onChange?: any;
+}) {
   const inputRef = useRef<any>(null);
   // 방향성 스타일 속성들을 처리
   const getDirectionalStyles = (): DirectionalStyleInterface => {

@@ -1,12 +1,7 @@
 import Center from "@/components/center/Center";
-import Div from "@/components/div/Div";
 import P from "@/components/P/P";
 
-export default async function () {
-  // return <div style={{
-  //   display:'flex',
-  //   justifyContent
-  // }}> qr 서브도메인을 통해 접속하셨군요</div>;
+export default async function QRInfo() {
   return (
     <Center>
       <P>해당 기능은 어플 혹은 홈페이지의 스캔 기능을 통해서만 작동합니다!</P>

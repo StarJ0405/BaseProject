@@ -31,7 +31,7 @@ class _Requester {
           const { cookies } = await import("next/headers");
 
           const cookieStore = await cookies();
-          jwt = cookieStore.get(Cookies.JWT);
+          jwt = cookieStore.get(Cookies.JWT)?.value;
         } else {
           jwt = new ReactCookies().get(Cookies.JWT, getCookieOption());
         }
@@ -168,12 +168,16 @@ class _Requester {
       });
     } catch (e) {}
   }
-  async getCurrentCustomer(
+  async login(data: any, callback?: Function): Promise<string | any> {
+    if (callback) callback(await this.post(`/auth`, data));
+    else return await this.post(`/auth`, data);
+  }
+  async getCurrentUser(
     data?: any,
     callback?: Function
   ): Promise<{ customer?: CustomerDataInterface } | any> {
-    if (callback) callback(await this.get(`/customers/me`, data));
-    else return await this.get(`/customers/me`, data);
+    if (callback) callback(await this.get(`/users/me`, data));
+    else return await this.get(`/users/me`, data);
   }
 
   async getLinks(data?: any, callback?: Function): Promise<any[] | any> {

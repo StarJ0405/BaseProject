@@ -1,30 +1,24 @@
-"use client";
+import AuthProvider from "./AuthPorivder/AuthPorivder";
+import BrowserEventProvider from "./BrowserEventProvider/BrowserEventProvider";
+import ModalProvider from "./ModalProvider/ModalProvider";
+import ProviderWrapperClient from "./ProviderWrapperClient";
 
-import ModalHandler from "@/modals/ModalHandler";
-import NiceModal from "@ebay/nice-modal-react";
-import { CookiesProvider } from "react-cookie";
-import AuthProvider from "./AuthPorivder";
-import BrowserEventProvider from "./BrowserEventProvider";
-import ModalProvider from "./ModalProvider";
-
-export default function ProviderWrapper({
+export default async function ProviderWrapper({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <CookiesProvider>
+    <ProviderWrapperClient>
       <BrowserEventProvider>
-        <AuthProvider>
-          <ModalProvider>
-            <NiceModal.Provider>
-              {/*  */}
-              {children}
-              <ModalHandler />
-            </NiceModal.Provider>
-          </ModalProvider>
-        </AuthProvider>
+        <ModalProvider>
+          <AuthProvider>
+            {/*  */}
+            {children}
+            {/*  */}
+          </AuthProvider>
+        </ModalProvider>
       </BrowserEventProvider>
-    </CookiesProvider>
+    </ProviderWrapperClient>
   );
 }
