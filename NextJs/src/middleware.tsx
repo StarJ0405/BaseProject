@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDeviceType } from "./shared/utils/Functions";
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|assets).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|assets|resources).*)",
+  ],
 };
 
 export function middleware(req: NextRequest) {
@@ -18,11 +20,11 @@ export function middleware(req: NextRequest) {
     mains.some((main) => main?.split(".")?.[0] === subdomain)
   ) {
     return NextResponse.rewrite(
-      new URL(`/$main/${deviceType}${url.pathname}`, req.url)
+      new URL(`/$main/${deviceType}${url.pathname}${url.search}`, req.url)
     );
   }
 
   return NextResponse.rewrite(
-    new URL(`/${subdomain}/${deviceType}${url.pathname}`, req.url)
+    new URL(`/${subdomain}/${deviceType}${url.pathname}${url.search}`, req.url)
   );
 }

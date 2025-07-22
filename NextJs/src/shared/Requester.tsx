@@ -2,7 +2,6 @@ import axios from "axios";
 import { Cookies as ReactCookies } from "react-cookie";
 import { Cookies } from "./utils/Data";
 import { dataToQuery, getCookieOption } from "./utils/Functions";
-import { CustomerDataInterface } from "./utils/Interfaces";
 const mode = process.env.REACT_APP_MODE;
 
 const origin = mode
@@ -192,6 +191,11 @@ class _Requester {
   ): Promise<any[] | any> {
     if (callback) callback(await this.get(`/links/${id}`, data));
     else return await this.get(`/links/${id}`, data);
+  }
+
+  async isConnectExist(data: any, callback?: Function) {
+    if (callback) callback(await this.get(`/connect/exist`, data));
+    else return await this.get(`/connect/exist`, data);
   }
 }
 

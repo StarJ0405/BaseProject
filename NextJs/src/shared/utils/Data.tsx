@@ -1,4 +1,4 @@
 export const Cookies = {
-  JWT: "_ecommerce_jwt",
+  JWT: "_puffu_official_jwt",
   MODE: "deviceMode",
 };

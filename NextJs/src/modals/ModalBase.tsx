@@ -1,10 +1,10 @@
 "use client";
 
-import { useNiceModal } from "@/providers/ModalProvider";
-import { useModal } from "@ebay/nice-modal-react";
-import clsx from "classnames";
 import FlexChild from "@/components/flex/FlexChild";
 import VerticalFlex from "@/components/flex/VerticalFlex";
+import { useNiceModal } from "@/providers/ModalProvider/ModalProviderClient";
+import { useModal } from "@ebay/nice-modal-react";
+import clsx from "classnames";
 import {
   forwardRef,
   useCallback,

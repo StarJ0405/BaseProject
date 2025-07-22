@@ -2,7 +2,6 @@ import AuthProvider from "./AuthPorivder/AuthPorivder";
 import BrowserEventProvider from "./BrowserEventProvider/BrowserEventProvider";
 import ModalProvider from "./ModalProvider/ModalProvider";
 import ProviderWrapperClient from "./ProviderWrapperClient";
-
 export default async function ProviderWrapper({
   children,
 }: {
@@ -11,13 +10,13 @@ export default async function ProviderWrapper({
   return (
     <ProviderWrapperClient>
       <BrowserEventProvider>
-        <ModalProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <ModalProvider>
             {/*  */}
             {children}
             {/*  */}
-          </AuthProvider>
-        </ModalProvider>
+          </ModalProvider>
+        </AuthProvider>
       </BrowserEventProvider>
     </ProviderWrapperClient>
   );

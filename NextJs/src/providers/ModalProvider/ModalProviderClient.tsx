@@ -1,6 +1,7 @@
 "use client";
+import ModalHandler from "@/modals/ModalHandler";
+import NiceModal from "@ebay/nice-modal-react";
 import { createContext, useContext, useState } from "react";
-
 export const ModalContext = createContext({
   addModal: function () {} as any,
   removeModal: function () {} as any,
@@ -42,7 +43,10 @@ export default function ModalProviderClient({
         modal: modals?.[modals?.length - 1],
       }}
     >
-      {children}
+      <NiceModal.Provider>
+        <ModalHandler />
+        {children}
+      </NiceModal.Provider>
     </ModalContext.Provider>
   );
 }

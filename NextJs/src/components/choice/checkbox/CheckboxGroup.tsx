@@ -69,9 +69,6 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   const [allChecked, setAllCheckedState] = useState(false);
   const groupRefs = React.useRef<Set<string>>(new Set()); // 그룹 내 모든 CheckboxChild ID를 관리
 
-  useEffect(() => {
-    console.log(allChecked, checkedValues);
-  }, [checkedValues]);
   // 모든 체크박스가 체크되었는지 확인
   useEffect(() => {
     const areAllRegisteredChecked =
@@ -81,22 +78,17 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   }, [checkedValues]);
 
   // CheckboxChild 상태 토글
-  const toggleCheckbox = useCallback(
-    (id: string, checked: boolean) => {
-      console.log(id, checked);
-      setCheckedValues((prev) => {
-        const newSet = new Set(prev);
-        if (checked) {
-          newSet.add(id);
-        } else {
-          newSet.delete(id);
-        }
-        onChange?.(Array.from(newSet));
-        return newSet;
-      });
-    },
-    [onChange]
-  );
+  const toggleCheckbox = useCallback((id: string, checked: boolean) => {
+    setCheckedValues((prev) => {
+      const newSet = new Set(prev);
+      if (checked) {
+        newSet.add(id);
+      } else {
+        newSet.delete(id);
+      }
+      return newSet;
+    });
+  }, []);
 
   // CheckboxChild 등록
   const registerCheckbox = useCallback((id: string) => {
@@ -105,38 +97,32 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   }, []);
 
   // CheckboxChild 등록 해제
-  const unregisterCheckbox = useCallback(
-    (id: string) => {
-      groupRefs.current.delete(id);
-      // console.log(`Unregistered: ${id}, Current refs:`, Array.from(groupRefs.current));
-      setCheckedValues((prev) => {
-        const newSet = new Set(prev);
-        if (!groupRefs.current.has(id)) {
-          // Only delete if it's no longer registered
-          newSet.delete(id);
-        }
-        onChange?.(Array.from(newSet));
-        return newSet;
-      });
-    },
-    [onChange]
-  );
+  const unregisterCheckbox = useCallback((id: string) => {
+    groupRefs.current.delete(id);
+    // console.log(`Unregistered: ${id}, Current refs:`, Array.from(groupRefs.current));
+    setCheckedValues((prev) => {
+      const newSet = new Set(prev);
+      if (!groupRefs.current.has(id)) {
+        // Only delete if it's no longer registered
+        newSet.delete(id);
+      }
+      return newSet;
+    });
+  }, []);
 
   // CheckboxAll 상태 변경
-  const setAllChecked = useCallback(
-    (checked: boolean) => {
-      setCheckedValues(() => {
-        const newSet = new Set<string>();
-        if (checked) {
-          groupRefs.current.forEach((id) => newSet.add(id));
-        }
-        onChange?.(Array.from(newSet));
-        return newSet;
-      });
-    },
-    [onChange]
-  );
-
+  const setAllChecked = useCallback((checked: boolean) => {
+    setCheckedValues(() => {
+      const newSet = new Set<string>();
+      if (checked) {
+        groupRefs.current.forEach((id) => newSet.add(id));
+      }
+      return newSet;
+    });
+  }, []);
+  useEffect(() => {
+    if (onChange) onChange?.(Array.from(checkedValues));
+  }, [checkedValues]);
   const contextValue = {
     name,
     value: checkedValues,

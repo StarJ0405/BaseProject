@@ -334,7 +334,7 @@ const Input = forwardRef(
             name={name}
           />
 
-          {placeHolder && (
+          {placeHolder && !value && (
             <div className={styles.placeHolderArea}>
               <div
                 className={clsx(styles.placeHolder, {

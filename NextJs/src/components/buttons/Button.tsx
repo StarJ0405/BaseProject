@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { useRef } from "react";
 import style from "./Button.module.css";
 function Button({
+  id,
   className,
   width,
   height,
@@ -79,6 +80,7 @@ function Button({
   };
   return (
     <button
+      id={id}
       disabled={disabled}
       style={{
         width,

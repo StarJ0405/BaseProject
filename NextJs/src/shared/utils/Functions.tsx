@@ -68,11 +68,13 @@ export const toast = ({
   autoClose?: number;
   icon?: string;
 }) => {
-  //   NiceModal.show("toast", {
-  //     message: i18n.t(message),
-  //     autoClose,
-  //     icon,
-  //   });
+  const NiceModal = require("@ebay/nice-modal-react");
+  const i18n = require("i18next");
+  NiceModal.show("toast", {
+    message: i18n.t(message),
+    autoClose,
+    icon,
+  });
 };
 
 export const log = (...message: any[]) => {

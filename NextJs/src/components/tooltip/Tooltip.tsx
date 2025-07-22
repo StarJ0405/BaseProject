@@ -1,5 +1,5 @@
 "use client";
-import { useNiceModal } from "@/providers/ModalProvider";
+import { useNiceModal } from "@/providers/ModalProvider/ModalProviderClient";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
