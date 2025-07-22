@@ -1,5 +1,4 @@
-// import i18n from "@/lang/i18n";
-// import NiceModal from "@ebay/nice-modal-react";
+import i18n from "@/lang/i18n";
 
 export const getCookieOption = ({
   maxAge,
@@ -69,7 +68,6 @@ export const toast = ({
   icon?: string;
 }) => {
   const NiceModal = require("@ebay/nice-modal-react");
-  const i18n = require("i18next");
   NiceModal.show("toast", {
     message: i18n.t(message),
     autoClose,
